@@ -20,7 +20,6 @@ class Data_Pakaian extends Model
         'pakaian_nama',
         'pakaian_harga',
         'pakaian_stok',
-        'pakaian_gambar_url',
     ];
     protected static function createData_Pakaian($data, UploadedFile $gambar = null)
     {
@@ -45,18 +44,6 @@ class Data_Pakaian extends Model
     {
         $data = DB::table('pakaian')->where('pakaian_id', $id)->first();
         return $data;
-    }
-    protected static function upload_gambar ($id, $data)
-    {
-        $pakaian = self::find($id);
-        if ($pakaian->pakaian_gambar_url) {
-            Storage::delete($pakaian->pakaian_gambar_url);
-        }
-        if ($data) {
-            $path = $data->store('public/pakaian/gambar');
-            $pakaian->pakaian_gambar_url = $path;
-        }
-        $pakaian->save();
     }
     protected static function updateData_Pakaian ($id, $data, UploadedFile $gambar = null)
     {

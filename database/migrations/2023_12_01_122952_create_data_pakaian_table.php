@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('pakaian_nama', 50);
             $table->integer('pakaian_harga')->default(0);
             $table->integer('pakaian_stok')->default(0);
-            $table->string('pakaian_gambar_url')->nullable(true);
             $table->timestamps();
 
             $table->foreign('pakaian_kategori_pakaian_id')->references('kategori_pakaian_id')->on('kategori_pakaian')->onUpdate('cascade')->onDelete('cascade');
