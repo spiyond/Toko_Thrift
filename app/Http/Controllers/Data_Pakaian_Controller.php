@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Data_Pakaian;
+use App\Models\Kategori_Pakaian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -10,12 +11,13 @@ class Data_Pakaian_Controller extends Controller
 {
     public function createData_Pakaian()
     {
-        return view("web.admin.crud.create_pakaian");
+        $data=Kategori_Pakaian::readKategori_PakaianAll();
+        return view("web.admin.crud.create_pakaian", ["kategori_pakaian" => $data]);
     }
     public function updateData_Pakaian($id)
     {
         $data = Data_Pakaian::readData_PakaianById($id);
-        return view("web.update.data_pakaian", ["data_pakaian" => $data]);
+        return view("web.admin.crud.update_pakaian", ["data_pakaian" => $data]);
     }
     public function create(Request $request)
     {

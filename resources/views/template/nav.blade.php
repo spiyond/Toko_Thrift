@@ -11,12 +11,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item ">
-        <a href="#" class="nav-link">Home</a>
+        <a href="home" class="nav-link">Home</a>
 	  <li class="nav-item">
-        <a class="nav-link" href="#">Cart</a>
+        <a class="nav-link" href="cart">Cart</a>
       </li>
 	  <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="profil">Profile</a>
       </li>
     </ul>
   </div>

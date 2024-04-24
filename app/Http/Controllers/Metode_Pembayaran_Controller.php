@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Data_User;
 use App\Models\Metode_Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -10,7 +11,8 @@ class Metode_Pembayaran_Controller extends Controller
 {
     public function createMetode_Pembayaran()
     {
-        return view("web.create.metode_pembayaran");
+        $data=Data_User::readData_UserAll();
+        return view("web.view.metode_pembayaran", ["Data_User" => $data]);
     }
     public function updateMetode_Pembayaran($id)
     {

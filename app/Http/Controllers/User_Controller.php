@@ -19,6 +19,17 @@ class User_Controller extends Controller
         $data = Data_User::readData_UserById($id);
         return view("web.update.data_user", ["data_user" => $data]);
     }
+    public function profil(Request $request, $id)
+    {
+        $data = Data_User::readData_UserById($id);
+        return view('web.view.profil', ['user' => $data]);
+    }
+
+    public function user(Request $request, $id)
+    {
+        $data = Data_User::readData_UserById($id);
+        return view('web.view.data_user', ['user' => $data]);
+    }
     public function login(Request $request)
 {
     $credentials = [

@@ -30,6 +30,15 @@ class Pages_Controller extends Controller
     {
         return view('data.admin');
     }
+    public function cartpage()
+    {
+        $pakaian = Data_Pakaian::readData_PakaianPaginate();
+        $kategori = Kategori_Pakaian::readKategori_PakaianAll();
+        return view('web.view.cart', [
+            "data_pakaian" => $pakaian,
+            "kategori_pakaian" => $kategori,
+        ]);
+    }
     public function profilPage()
     {
         $metode = Metode_Pembayaran::readMetode_PembayaranAll();
@@ -44,19 +53,6 @@ class Pages_Controller extends Controller
         $pakaian = Data_Pakaian::readData_PakaianAll();
         return view("web.view.dashboard", ["data_pakaian" => $pakaian]);
     }
-    public function searchPage(Request $request)
-    {
-        $search = $request->input("search");
-        $pakaian = Data_Pakaian::where(
-            "pakaian_nama",
-            "like",
-            "%" . $search . "%"
-        )->get();
-        return view("web.view.search", [
-            "data_pakaian" => $pakaian,
-            "search" => $search,
-        ]);
-    }
     public function checkoutPage()
     {
         $metode = Metode_Pembayaran::readMetode_PembayaranAll();
@@ -70,7 +66,7 @@ class Pages_Controller extends Controller
     {
         $data = Data_Pakaian::readData_PakaianById($id);
         $pakaian = Data_Pakaian::readData_PakaianAll();
-        return view("web.view.detail", [
+        return view("web.view.cart", [
             "detail" => $data,
             "data_pakaian" => $pakaian,
         ]);
@@ -90,6 +86,16 @@ class Pages_Controller extends Controller
             "kategori_pakaian" => $kategori,
         ]);
     }
+
+    public function data_pakaian_penggunaPage()
+    {
+        $pakaian = Data_Pakaian::readData_PakaianPaginate();
+        $kategori = Kategori_Pakaian::readKategori_PakaianAll();
+        return view("web.view.home", [
+            "data_pakaian" => $pakaian,
+            "kategori_pakaian" => $kategori,
+        ]);
+    }
     public function review_pakaianPage()
     {
         $data = Review_Pakaian::readReview_PakaianPaginate();
@@ -102,15 +108,25 @@ class Pages_Controller extends Controller
     }
     public function metode_pembayaranPage()
     {
-        $data = Metode_Pembayaran::readMetode_PembayaranPaginate();
-        return view("web.data.metode_pembayaran", [
-            "metode_pembayaran" => $data,
+        $data1 = Metode_Pembayaran::readMetode_PembayaranPaginate();
+        $data2 = Data_User::readData_UserAll();
+        
+        return view("web.view.metode_pembayaran", [
+            "metode_pembayaran" => $data1,
+            "data_user" => $data2,
         ]);
     }
     public function data_pembelianPage()
     {
-        $data = Data_Pembelian::readData_PembelianPaginate();
-        return view("web.data.data_pembelian", ["data_pembelian" => $data]);
+        $data1 = Data_Pembelian::readData_PembelianPaginate();
+        $data2 = Data_User::readData_UserAll();
+        $data3 = Metode_Pembayaran::readMetode_PembayaranPaginate();
+        return view("web.view.pembelian", [
+            "data_pembelian" => $data1,
+            "data_user" => $data2,
+            "metode_pembayaran" => $data3,
+        
+        ]);
     }
     public function detail_pembelianPage()
     {

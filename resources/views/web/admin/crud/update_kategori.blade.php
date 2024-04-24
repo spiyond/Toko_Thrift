@@ -1,20 +1,21 @@
-@extends('template.layout_admin')
+@extends('template.leyout')
 @section('title', 'admin - Toko Baju ')
 @section('main')
 <div id="layoutSidenav_content">
 <main>
 <div class="container-fluid px-4">
-<h1 class="mt-4">Update Buku</h1>
+<h1 class="mt-4">Update kategori</h1>
 <ol class="breadcrumb mb-4">
 <li class="breadcrumb-item active">Halaman Update Data Buku</li>
 </ol>
 <form action="{{ route('action.kategori_pakaian') }}" method="post">
+@crsf
 <div class="row gap-3">
                         <div class="col-12 col-md-4 form-group">
                                 <label for="nama" class="form-label">kategori nama*</label>
                                 <input type="text" name="nama" id="nama" class="form-control"
                                     placeholder="Masukkan kategori nama">
-                            </div> 
+                            </div>
                             <div class="col-12 col-md-4 form-group">
                                 <label for="pakaian_nama" class="form-label">kategori kode*</label>
                                 <input type="text" name="kode" id="kode" class="form-control"

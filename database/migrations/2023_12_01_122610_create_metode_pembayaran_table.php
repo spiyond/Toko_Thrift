@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('metode_pembayaran', function (Blueprint $table) {
             $table->id('metode_pembayaran_id');
             $table->unsignedBigInteger('metode_pembayaran_user_id');
-            $table->enum('metode_pembayaran_jenis', ['ovo', 'dana', 'bca', 'cod']);
+            $table->string('metode_pembayaran_jenis');
             $table->string('metode_pembayaran_nama', 100);
             $table->bigInteger('metode_pembayaran_nomor');
             $table->timestamps();

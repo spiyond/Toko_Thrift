@@ -20,6 +20,12 @@ class Data_Pembelian_Controller extends Controller
         $data = Data_Pembelian::readData_PembelianById($id);
         return view("web.update.pembelian", ["pembelian" => $data]);
     }
+
+    public function view(Request $request, $id)
+    {
+        $data = Data_Pembelian::readData_PembelianById($id);
+        return view('web.view.data_pengembalian', ['pembelian' => $data]);
+    }
     public function create(Request $request)
     {
         $data = [
@@ -32,27 +38,7 @@ class Data_Pembelian_Controller extends Controller
             "pembelian_status" => $request->input("status"),
         ];
         $pembelian = Data_Pembelian::create($data);
-
-        $pakaian = $request->input("pakaian");
-        $jumlah = $request->input("jumlah");
-        $total = $request->input("total");
-
-        foreach ($pakaian as $index => $pakaian_id) {
-            $detailData = [
-                "detail_pembelian_pembelian_id" => $pembelian->pembelian_id,
-                "detail_pembelian_pakaian_id" => $pakaian_id,
-                "detail_pembelian_jumlah" => $jumlah[$index],
-                "detail_pembelian_total_harga" => $total[$index],
-            ];
-
-            Detail_Pembelian::create($detailData);
-
-            $data_pakaian = Data_Pakaian::find($pakaian_id);
-            if ($data_pakaian) {
-                $data_pakaian->decrement("pakaian_stok", $jumlah[$index]);
-            }
-        }
-        Session::forget("cart");
+        
         Log::info(
             "🟢 Data_Pembelian " .
                 $request->input("nama") .

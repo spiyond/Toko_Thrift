@@ -8,14 +8,23 @@
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active">Halaman Tambah Data pakaian</li>
                     </ol>
-                    <form action="{{ route('action.create_data_pakaian') }}" method="post">
-                        @csrf
+                    <form action="{{ route('action.create_data_pakaian') }}" method="post">   
+                    @csrf
                         <div class="row gap-3">
                         <div class="col-12 col-md-4 form-group">
-                                <label for="kategori" class="form-label">kategori pakaian*</label>
-                                <input type="text" name="kategori" id="kategori" class="form-control"
-                                    placeholder="Masukkan kategori pakaian">
+                            <div class="col-md-6">
+                            <label for="kategori" class="form-label">Kategori Pakaian</label>
+                            <select class="form-control" name="kategori" id="kategori" required>
+                            <option disabled selected>- Pilih Kategori Pakaian -</option>
+                            @foreach ($kategori_pakaian as $item)
+                            @if ($item->kategori_pakaian_status == 1)
+                            <option value="{{ $item->kategori_pakaian_id }}">
+                            {{ $item->kategori_pakaian_nama }}</option>
+                            @endif
+                            @endforeach
+                            </select>
                             </div> 
+
                             <div class="col-12 col-md-4 form-group">
                                 <label for="pakaian_nama" class="form-label">pakaian nama*</label>
                                 <input type="text" name="nama" id="nama" class="form-control"

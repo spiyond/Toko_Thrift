@@ -16,13 +16,13 @@
                     </div>
                 @endif
                 <div class="d-flex items-center gap-4">
-                    @if ($user_->user_pict_url === '')
+                {{--  @if ($user->user_pict_url === '')
                         <img src="{{ asset('img/placeholder.png') }}" alt="..."
                             class="rounded-circle img-profile img-thumbnail">
                     @else
                         <img src="{{ asset('storage/profile_pictures/' . basename($user->user_pict_url)) }}" alt="..."
                             class="rounded-circle img-profile img-thumbnail">
-                    @endif
+                    @endif  --}}
                     {{-- Upload Profile Form --}}
                     <form action="{{ route('action.upload_profile', ['id' => $user->user_id]) }}" method="POST"
                         enctype="multipart/form-data">
@@ -65,8 +65,12 @@
                     </div>
                     <div class="form-group col-12 col-md-4">
                         <button class="btn btn-primary">Update</button>
+                        
                     </div>
                 </form>
+                <a href='/metode_pembayaran'>
+                        <button class="btn btn-primary">Metode Pembayaran</button>
+                </a>
             </div>
         </main>
     </div>

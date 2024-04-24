@@ -1,4 +1,5 @@
 @extends('template.layout_admin')
+@extends('template.leyout')
 @extends('template.sidebar_admin')
 @section('title', 'admin - Toko Baju ')
 @section('main')
@@ -90,7 +91,6 @@
                         <tbody class="table-group-divider">
                             @foreach ($kategori_pakaian as $items)
                             <tr>
-                                <td>
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>{{ $items->kategori_pakaian_nama }}</td>
                                 <td>{{ $items->kategori_pakaian_kode }}</td>

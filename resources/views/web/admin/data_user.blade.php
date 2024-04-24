@@ -68,7 +68,7 @@
                             <td>{{$items->user_notelp}}</td>
                             <td>{{$items->user_level}}</td>
                             <td>
-                                <a class="d-grid" href="{{route('update_user', ['user_id' => $items->user_id])}}"><button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></a>
+                               {{-- <a class="d-grid" href="{{route('update_user', ['user_id' => $items->user_id])}}"><button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></a>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteRakUser_{{$items->user_id}}">
@@ -90,7 +90,7 @@
                                     <form class="d-grid" action="{{route('user.delete', ['user_id' => $items->user_id])}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger">Ya (Konfirmasi Hapus)</button>
+                                        <button class="btn btn-danger">Ya (Konfirmasi Hapus)</button> --}}
                                     </form>
                                 </div>
                                 </div>
